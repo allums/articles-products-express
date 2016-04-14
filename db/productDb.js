@@ -1,18 +1,19 @@
-var products = require('/persistantProducts.js');
+var products = require('./persistantProducts.js');
 
 
 var productDb = (function(){
 
 
 function getProduct(id){
-  console.log(products);
+  //console.log(products);
   
-  for (var i = 0; i < products.length -1; i++){
-    console.log(products[i]);
+  for (var i = 0; i < products.length; i++){
+    
 
-    if (id === products[i].id){
-      console.log('works');
+    if (id == products[i].id){
+      return products[i];
     }
+
 
   }
 }

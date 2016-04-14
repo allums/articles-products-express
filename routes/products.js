@@ -28,8 +28,7 @@ productsRoute.put('/:id', function(req, res){
 	var productId = req.params.id;
   ProductDb.getProduct(productId);
  	res.send({'success': true});
-
-  
+ 
 });
 
 productsRoute.delete('/:id', function(req, res){
