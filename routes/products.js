@@ -15,7 +15,7 @@ productsRoute.get('/', function(req, res){
 productsRoute.get('/:id/edit', function(req, res){
 	var productId = req.params.id;
 	var product = ProductDb.getProduct(productId);
-	res.render('products/edit', {product: product});	
+	res.render('products/edit', {product: product});
 });
 
 productsRoute.post('/', function(req, res) {
