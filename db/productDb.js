@@ -13,6 +13,7 @@ var productDb = (function(){
   function createProduct(productinfo){
     productinfo.id = Math.floor(Math.random() * 100000);
     products.push(productinfo);
+    console.log(productinfo);
     return true; 
   }
 

@@ -12,6 +12,12 @@ productsRoute.get('/', function(req, res){
 	res.render('products/index', {products: products});
 });
 
+productsRoute.get('/:id/edit', function(req, res){
+	var productId = req.params.id;
+	var product = ProductDb.getProduct(productId);
+	res.render('products/edit', {product: product});	
+});
+
 productsRoute.post('/', function(req, res) {
 	if(ProductDb.createProduct(req.body) === true) {
 		res.json({success: true});
