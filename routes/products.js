@@ -18,8 +18,10 @@ productsRoute.get('/'), function(req, res){
 productsRoute.post('/', function(req, res) {
 
 	if(ProductDb.createProduct(req.body) === true) {
-
 		res.json({success: true});
+	}
+	else {
+		res.json({'success': false});
 	}
 });
 
@@ -29,7 +31,7 @@ productsRoute.put('/:id', function(req, res){
 
 	var productId = req.params.id;
   ProductDb.editProduct(productId, req.body);
- 	res.send({'success': true});
+ 	res.json({'success': true});
 
 });
 
@@ -38,9 +40,12 @@ productsRoute.put('/:id', function(req, res){
 productsRoute.delete('/:id', function(req, res){
 
 	var productId = req.params.id;
-	ProductDb.deleteProduct(productId, req.body);
-	
-	
+	if (ProductDb.deleteProduct(productId, req.body) === true){
+		res.json({'success': true});
+	}
+	else {
+		res.json({'success': false});
+	}
 });
 
 
