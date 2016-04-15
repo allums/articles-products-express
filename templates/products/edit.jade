@@ -1,9 +1,13 @@
 h2
   | Product Details
-form
-  input(type='text', placeholder='product name', value='#{product.name}')
+form(method="post", action='/products/#{product.id}?_method=PUT')
+  input(type='text', name='name', placeholder='product name', value='#{product.name}')
   br
-  input(type='text', placeholder='product price', value='#{product.price}')
+  input(type='text', name='price', placeholder='product price', value='#{product.price}')
   br
-  input(type='text', placeholder='product inventory', value='#{product.inventory}')
+  input(type='text', name='inventory', placeholder='product inventory', value='#{product.inventory}')
   br
+  br
+  input(type='submit', value='Submit')
+  br
+  a(class={active: currentUrl === 'products/#{product.id}/edit'} href='/products') Back

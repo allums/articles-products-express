@@ -1,9 +1,9 @@
 h2
-  | Product Details	
+  | Product Details
 div
   each product in products
     h4=product.name
     p=product.price
     p=product.inventory
     br
-    a(class={active: currentUrl === '/products'} href='products/#{product.id}/edit') Edit Product
+    a(class={active: currentUrl === '/products'} href='/products/#{product.id}/edit') Edit Product

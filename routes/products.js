@@ -27,7 +27,7 @@ productsRoute.post('/', function(req, res) {
 	}
 });
 
-productsRoute.put('/:id', function(req, res){
+productsRoute.put('/:id', function(req, res){console.log('works');
 	var productId = req.params.id;
   ProductDb.editProduct(productId, req.body);
  	res.json({'success': true});
