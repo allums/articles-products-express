@@ -9,14 +9,16 @@ productsRoute.use(bodyParser.urlencoded({
 
 //get products
 
-productsRoute.get('/'), function(req, res){
-	ProductDb.getProduct();
-};
+productsRoute.get('/', function(req, res){
+	res.render('products/index', {name: 'Stephen'});
+	//res.send('is this thing working?');
+});
 
 //create new product and store to persProds
 
 productsRoute.post('/', function(req, res) {
 
+	console.log('test');
 	if(ProductDb.createProduct(req.body) === true) {
 		res.json({success: true});
 	}
