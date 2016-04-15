@@ -30,11 +30,16 @@ var productDb = (function(){
     return true;
   }
 
+  function getAllProducts(){
+    return products;
+  }
+
   return {
     createProduct: createProduct,
     getProduct: getProduct,
     editProduct: editProduct,
-    deleteProduct: deleteProduct
+    deleteProduct: deleteProduct,
+    getAllProducts: getAllProducts
   };
 
 })();

@@ -7,18 +7,12 @@ productsRoute.use(bodyParser.urlencoded({
   extended: true
 }));
 
-//get products
-
 productsRoute.get('/', function(req, res){
-	res.render('products/index', {name: 'Stephen'});
-	//res.send('is this thing working?');
+	var products = ProductDb.getAllProducts();
+	res.render('products/index', {products: products});
 });
 
-//create new product and store to persProds
-
 productsRoute.post('/', function(req, res) {
-
-	console.log('test');
 	if(ProductDb.createProduct(req.body) === true) {
 		res.json({success: true});
 	}
@@ -27,20 +21,13 @@ productsRoute.post('/', function(req, res) {
 	}
 });
 
-//find and modify an item by id
-
 productsRoute.put('/:id', function(req, res){
-
 	var productId = req.params.id;
   ProductDb.editProduct(productId, req.body);
  	res.json({'success': true});
-
 });
 
-//find and delete an item by id
-
 productsRoute.delete('/:id', function(req, res){
-
 	var productId = req.params.id;
 	if (ProductDb.deleteProduct(productId, req.body) === true){
 		res.json({'success': true});
@@ -49,6 +36,5 @@ productsRoute.delete('/:id', function(req, res){
 		res.json({'success': false});
 	}
 });
-
 
 module.exports = productsRoute;
