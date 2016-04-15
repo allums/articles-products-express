@@ -18,6 +18,10 @@ productsRoute.get('/:id/edit', function(req, res){
 	res.render('products/edit', {product: product});
 });
 
+productsRoute.get('/new', function(req, res){
+	res.render('products/new');
+});
+
 productsRoute.post('/', function(req, res) {
 	if(ProductDb.createProduct(req.body) === true) {
 		res.json({success: true});
@@ -30,7 +34,7 @@ productsRoute.post('/', function(req, res) {
 productsRoute.put('/:id', function(req, res){console.log('works');
 	var productId = req.params.id;
   ProductDb.editProduct(productId, req.body);
- 	res.json({'success': true});
+ 	res.redirect('/products');
 });
 
 productsRoute.delete('/:id', function(req, res){
